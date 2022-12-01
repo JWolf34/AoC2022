@@ -1,1 +1,2 @@
 python fetchInput.py
+pause

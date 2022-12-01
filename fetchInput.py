@@ -13,9 +13,14 @@ def fetchInput():
     session_is = getSession()
     cookies_are = dict(session=session_is)
     r = requests.get("https://adventofcode.com/{year}/day/{day}/input".format(year = YEAR, day = DAY), cookies=cookies_are)
-    input = open("Day{day}\input.txt".format(day = DAY), 'a')
-    input.write(r.text)
-    input.close()
+
+    try:
+        input = open("Day{day}\input.txt".format(day = DAY), 'a')
+        input.write(r.text)
+        input.close()
+        print("Fetched! Happy coding :)")
+    except FileNotFoundError:
+        print("Error occurred when fetching today's input. Is it not the Advent of Code?")
 
     print("Fetched! Happy coding :)")
 
