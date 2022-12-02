@@ -3,12 +3,12 @@ import requests
 import json
 
 def fetchInput():
-    date = str(datetime.date.today())
+    date = datetime.date.today().strftime("%#Y-%#m-%#d")
     date = date.split('-')
     YEAR = date [0]
     MONTH = date [1]
     DAY = date[2]
-
+    
     print("Fetching input for Day {day} of year {year}...".format(day = DAY, year = YEAR))
     session_is = getSession()
     cookies_are = dict(session=session_is)
@@ -19,10 +19,10 @@ def fetchInput():
         input.write(r.text)
         input.close()
         print("Fetched! Happy coding :)")
-    except FileNotFoundError:
+    except FileNotFoundError as e:
         print("Error occurred when fetching today's input. Is it not the Advent of Code?")
+        print(e)
 
-    print("Fetched! Happy coding :)")
 
 def getSession():
     with open("secrets.json") as secrets:
