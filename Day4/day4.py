@@ -36,9 +36,7 @@ def part2():
         lower_bounds = (int(sections1[0]), int(sections2[0]))
         upper_bounds = (int(sections1[1]), int(sections2[1]))
 
-        if (lower_bounds[0] <= lower_bounds[1]) and (upper_bounds[0] >= upper_bounds[1]):
-            overlaps += 1
-        elif (lower_bounds[1] <= lower_bounds[0]) and (upper_bounds[1] >= upper_bounds[0]):
+        if (lower_bounds[0] <= upper_bounds[1]) and (lower_bounds[1] <= upper_bounds[0]):
             overlaps += 1
 
     print(overlaps)
